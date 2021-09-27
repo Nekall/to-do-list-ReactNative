@@ -19,6 +19,7 @@ const styles = StyleSheet.create({
   container: {
     marginTop: 60,
     marginLeft: 20,
+    marginBottom: 15,
   },
   date: {
     fontSize: 25,
