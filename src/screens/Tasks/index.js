@@ -6,24 +6,52 @@ import { StyleSheet, Text, View, FlatList } from 'react-native';
 
 export default function TodoScreen(){
 
-  const [tasks, setTasks] = useState([
-    {title: "Hello world", isCompleted: false},
-    {title: "Bye world", isCompleted: false},
-    {title: "Welcome back world", isCompleted: false},
-  ])
+  const [tasks, setTasks] = useState([]);
 
   const renderItem = ({ item }) => {
     return(
-      <Task task={ item }/>
+      <Task task={ item } updateTask={updateTask} deleteTask={deleteTask} />
     )
-  }
+  };
 
   const addTask = (title) => {
     setTasks([...tasks, {
       id: Date.now(),
       title,
-      isCompleted: false,
+      isCompleted: false
     }])
+  };
+
+  const updateTask = (id) => {
+    let newTasks = [];
+
+    tasks.forEach((i) => {
+      if(i.id !== id){
+        newTasks.push(i)
+        return;
+      }
+
+      newTasks.push({
+        id,
+        title: i.title,
+        isCompleted: !i.isCompleted,
+      })
+    });
+
+    setTasks(newTasks);
+  };
+
+  const deleteTask = (id) => {
+    let newTasks = [];
+
+    tasks.forEach((i) => {
+      if(i.id !== id){
+        newTasks.push(i)
+        return;
+      }
+    });
+
+    setTasks(newTasks);
   }
 
   return(

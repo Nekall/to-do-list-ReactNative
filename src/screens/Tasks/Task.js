@@ -1,22 +1,34 @@
 import React, { useState } from "react";
 import Header from "../../components/Header";
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { StyleSheet, Text, View, Image, Pressable } from 'react-native';
 
-export default function TodoScreen({ task }){
+export default function TodoScreen({ task, updateTask, deleteTask }){
+
+  const checkTask = () => {
+    updateTask(task.id)
+  }
+
+  const delTask = () => {
+    deleteTask(task.id)
+  }
 
   return(
     <View style={styles.container}>
-      <View style={styles.SubContainer}>
-        <Image
-          style={styles.check}
-          source={require('../../../assets/icons/unchecked.png')}
-        />
-        <Text style={styles.task}>{task.title}</Text>
+      <View>
+        <Pressable style={styles.SubContainer} onPress={checkTask}>
+          <Image
+            style={styles.icons}
+            source={require('../../../assets/icons/unchecked.png')}
+          />
+          <Text style={styles.task}>{task.title}</Text>
+        </Pressable>
       </View>
-      <Image
-        style={styles.trash}
-        source={require('../../../assets/icons/trash.png')}
-      />
+      <Pressable onPress={delTask}>
+        <Image
+          style={styles.icons}
+          source={require('../../../assets/icons/trash.png')}
+        />
+      </Pressable>
     </View>
   )
 }
@@ -35,12 +47,8 @@ const styles = StyleSheet.create({
   task: {
     marginLeft: 20,
   },
-  check: {
+  icons: {
     width: 30,
     height: 30,
   },
-  trash: {
-    width: 30,
-    height: 30,
-    },
 });
