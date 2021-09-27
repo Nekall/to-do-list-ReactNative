@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Header from "../../components/Header";
-import { StyleSheet, Text, View,FlatList, Image } from 'react-native';
+import { StyleSheet, Text, View, Image } from 'react-native';
 
 export default function TodoScreen({ task }){
 
@@ -24,7 +24,7 @@ export default function TodoScreen({ task }){
 const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
-    margin: 15,
+    margin: 10,
     justifyContent: "space-between",
     alignItems: "center",
   },
