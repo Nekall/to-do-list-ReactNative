@@ -18,7 +18,7 @@ export default function TodoScreen({ task, updateTask, deleteTask }){
         <Pressable style={styles.SubContainer} onPress={checkTask}>
           <Image
             style={styles.icons}
-            source={require('../../../assets/icons/unchecked.png')}
+            source={task.isCompleted ? require('../../../assets/icons/check.png') : require('../../../assets/icons/unchecked.png')}
           />
           <Text style={styles.task}>{task.title}</Text>
         </Pressable>
@@ -44,6 +44,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
   },
+  
   task: {
     marginLeft: 20,
   },
