@@ -20,5 +20,8 @@ export default function FloatingBtn({formVisible, setFormVisible}){
 }
 
 const styles = StyleSheet.create({
-
-});
+  addIcon: {
+      width: 50,
+      height: 50,
+    }
+})

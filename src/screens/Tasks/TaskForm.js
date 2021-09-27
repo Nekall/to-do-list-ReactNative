@@ -27,6 +27,7 @@ export default function TodoScreen({ addTask }){
         placeholder="Nouvelle tâche"
       />
       <Button
+        color="grey"
         title="Ajouter"
         onPress={addNewTask}
       />
@@ -45,5 +46,5 @@ const styles = StyleSheet.create({
     borderColor: "#000000",
     padding: 2,
     width: "70%",
-  },
+  }
 });

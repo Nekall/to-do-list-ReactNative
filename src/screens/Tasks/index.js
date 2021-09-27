@@ -3,6 +3,7 @@ import Header from "../../components/Header";
 import Task from "../../screens/Tasks/Task.js";
 import TaskForm from "../../screens/Tasks/TaskForm.js";
 import FloatingBtn from "../../components/FloatingBtn";
+import Counter from "../../components/Counter";
 import { StyleSheet, Text, View, FlatList, Image, Pressable } from 'react-native';
 
 export default function TodoScreen(){
@@ -63,6 +64,10 @@ export default function TodoScreen(){
         ListHeaderComponent={
           <>
             <Header />
+            <View style={styles.stats}>
+              <Counter numb={tasks.length} title="Tâches crées" />
+              <Counter numb={tasks.filter(t => t.isCompleted === true).length} title="Tâches effectuées." />
+            </View>
             {formVisible && <TaskForm addTask={addTask} />}
           </>
         }
@@ -83,8 +88,10 @@ const styles = StyleSheet.create({
     right: 20,
     bottom: 20,
   },
-  addIcon: {
-      width: 50,
-      height: 50,
-    }
+  stats: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginTop: 10,
+    marginBottom: 10,
+  },
 })
