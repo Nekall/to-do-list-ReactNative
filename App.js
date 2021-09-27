@@ -1,16 +1,17 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
+import TaskScreen from "./src/screens/Tasks"
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Hello_World!</Text>
-    </View>
+    <SafeAreaView style={styles.container}>
+      <TaskScreen />
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 1
   },
 });
