@@ -1,0 +1,9 @@
+const ADD_TASK = "ADD_TASK";
+const TOGGLE_TASK = "TOGGLE_TASK";
+const DELETE_TASK = "DELETE_TASK";
+
+export {
+  ADD_TASK,
+  TOGGLE_TASK,
+  DELETE_TASK,
+}

@@ -4,7 +4,7 @@ import Task from "../../screens/Tasks/Task.js";
 import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
 import {useDispatch} from 'react-redux';
 
-import {addNTask} from "../../redux/store";
+import { addNTask } from "../../redux/actions";
 
 export default function TaskForm(){
   const [newTask, setNewTask] = useState("");

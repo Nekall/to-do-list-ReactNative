@@ -5,14 +5,15 @@ import TaskForm from "../../screens/Tasks/TaskForm.js";
 import FloatingBtn from "../../components/FloatingBtn";
 import Counter from "../../components/Counter";
 import { StyleSheet, Text, View, FlatList, Image, Pressable } from 'react-native';
-import {useSelector} from 'react-redux';
-import { getTasks } from "../../redux/store";
+import {useSelector, useDispatch} from 'react-redux';
+import { toggleTask, removeTask } from "../../redux/actions";
+import { getTasks } from "../../redux/selectors";
 
 export default function TodoScreen(){
   const [formVisible, setFormVisible] = useState(false);
 
   const tasks = useSelector(getTasks);
-  console.log("All TASK", tasks);
+  const dispatch = useDispatch();
 
   const renderItem = ({ item }) => {
     return(
@@ -21,35 +22,11 @@ export default function TodoScreen(){
   };
 
   const updateTask = (id) => {
-/*    let newTasks = [];
-
-    tasks.forEach((i) => {
-      if(i.id !== id){
-        newTasks.push(i)
-        return;
-      }
-
-      newTasks.push({
-        id,
-        title: i.title,
-        isCompleted: !i.isCompleted,
-      })
-    });
-
-    setTasks(newTasks);*/
+    dispatch(toggleTask(id))
   };
 
   const deleteTask = (id) => {
-/*    let newTasks = [];
-
-    tasks.forEach((i) => {
-      if(i.id !== id){
-        newTasks.push(i)
-        return;
-      }
-    });
-
-    setTasks(newTasks);*/
+    dispatch(removeTask(id))
   };
 
   return(
