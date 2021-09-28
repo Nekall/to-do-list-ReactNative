@@ -5,11 +5,14 @@ import TaskForm from "../../screens/Tasks/TaskForm.js";
 import FloatingBtn from "../../components/FloatingBtn";
 import Counter from "../../components/Counter";
 import { StyleSheet, Text, View, FlatList, Image, Pressable } from 'react-native';
+import {useSelector} from 'react-redux';
+import { getTasks } from "../../redux/store";
 
 export default function TodoScreen(){
-
-  const [tasks, setTasks] = useState([]);
   const [formVisible, setFormVisible] = useState(false);
+
+  const tasks = useSelector(getTasks);
+  console.log("All TASK", tasks);
 
   const renderItem = ({ item }) => {
     return(
@@ -17,16 +20,8 @@ export default function TodoScreen(){
     )
   };
 
-  const addTask = (title) => {
-    setTasks([...tasks, {
-      id: Date.now(),
-      title,
-      isCompleted: false
-    }])
-  };
-
   const updateTask = (id) => {
-    let newTasks = [];
+/*    let newTasks = [];
 
     tasks.forEach((i) => {
       if(i.id !== id){
@@ -41,11 +36,11 @@ export default function TodoScreen(){
       })
     });
 
-    setTasks(newTasks);
+    setTasks(newTasks);*/
   };
 
   const deleteTask = (id) => {
-    let newTasks = [];
+/*    let newTasks = [];
 
     tasks.forEach((i) => {
       if(i.id !== id){
@@ -54,7 +49,7 @@ export default function TodoScreen(){
       }
     });
 
-    setTasks(newTasks);
+    setTasks(newTasks);*/
   };
 
   return(
@@ -68,7 +63,7 @@ export default function TodoScreen(){
               <Counter numb={tasks.length} title="Tâches crées" />
               <Counter numb={tasks.filter(t => t.isCompleted === true).length} title="Tâches effectuées." />
             </View>
-            {formVisible && <TaskForm addTask={addTask} />}
+            {formVisible && <TaskForm />}
           </>
         }
         data={tasks}

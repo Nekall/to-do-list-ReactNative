@@ -2,10 +2,13 @@ import React, { useState } from "react";
 import Header from "../../components/Header";
 import Task from "../../screens/Tasks/Task.js";
 import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
+import {useDispatch} from 'react-redux';
 
-export default function TodoScreen({ addTask }){
+import {addNTask} from "../../redux/store";
 
+export default function TaskForm(){
   const [newTask, setNewTask] = useState("");
+  const dispatch = useDispatch();
 
   const onChangeText = (v) => {
     setNewTask(v)
@@ -13,8 +16,9 @@ export default function TodoScreen({ addTask }){
 
   const addNewTask = () => {
     if(newTask !== ""){
-      addTask(newTask)
-      setNewTask("")
+
+      dispatch(addNTask(newTask));
+      setNewTask("");
     }
   };
 

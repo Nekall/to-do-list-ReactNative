@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Header from "../../components/Header";
 import { StyleSheet, Text, View, Image, Pressable } from 'react-native';
 
-export default function TodoScreen({ task, updateTask, deleteTask }){
+export default function Task({ task, updateTask, deleteTask }){
 
   const checkTask = () => {
     updateTask(task.id)
@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
   },
-  
+
   task: {
     marginLeft: 20,
   },

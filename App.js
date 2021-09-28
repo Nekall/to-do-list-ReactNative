@@ -2,7 +2,7 @@ import React from 'react';
 import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
 import TodoScreen from "./src/screens/Tasks"
 import { Provider } from 'react-redux';
-import {store} from '../src/redux/store';
+import {store} from './src/redux/store';
 
 export default function App() {
   return (
